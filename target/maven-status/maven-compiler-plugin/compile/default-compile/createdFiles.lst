@@ -1,0 +1,5 @@
+com\neonpulse\domain\MessageNotifier.class
+com\neonpulse\Main.class
+com\neonpulse\domain\BookingService.class
+com\neonpulse\domain\Event.class
+com\neonpulse\domain\OutOfStockException.class
