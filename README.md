@@ -1,10 +1,10 @@
 # NeonPulse Core - Módulo de Dominio y Pruebas Unitarias
 
-Este proyecto contiene el núcleo de dominio (*Core Domain*) para la gestión y reserva de entradas de eventos, desarrollado con Java 21 puro y alineado a las mejores prácticas de Arquitectura Limpia (sin dependencias externas en el dominio).
+Este proyecto contiene el núcleo de dominio (*Core Domain*) para la gestión y reserva de entradas de eventos. Está desarrollado con Java 21 y alineado con las respectivas prácticas de arquitectura limpia (sin dependencias externas en el dominio).
 
 ---
 
-## 🛠️ Tecnologías y Herramientas
+## Tecnologías y Herramientas
 * **Lenguaje:** Java 21
 * **Gestor de Construcción:** Apache Maven
 * **Framework de Pruebas:** JUnit 5 (Jupiter)
@@ -13,7 +13,7 @@ Este proyecto contiene el núcleo de dominio (*Core Domain*) para la gestión y 
 
 ---
 
-## 🏗️ Arquitectura de Paquetes y Clases
+## Arquitectura de Paquetes y Clases
 
 ### Código de Producción (`src/main/java/com/neonpulse/domain/`)
 * **`Event.java`**: Entidad principal de dominio que gestiona la capacidad y reserva de tickets.
@@ -27,7 +27,7 @@ Este proyecto contiene el núcleo de dominio (*Core Domain*) para la gestión y 
 
 ---
 
-## 🚀 Comandos de Ejecución (Maven)
+## Comandos de Ejecución (Maven)
 
 ### Compilar el proyecto
 ```bash
