@@ -5,55 +5,67 @@
          http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- 1. Heredar del gestor central de Spring Boot -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.3</version>
+        <relativePath/>
+    </parent>
+
     <groupId>com.hielofriends</groupId>
     <artifactId>hielofriends-core</artifactId>
     <version>1.0.0-SNAPSHOT</version> 
     <name>hielofriends-core</name>
 
     <properties>
+        <java.version>21</java.version>
         <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <!-- BLOQUE DE DEPENDENCIAS PARA TESTING -->
     <dependencies>
-        <!-- JUnit 5 para ejecutar las pruebas unitarias -->
+        <!-- Web MVC para Controladores REST -->
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>5.10.2</version>
-            <scope>test</scope>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- Mockito Core y JUnit 5 Extension para simular interfaces -->
+        <!-- Persistencia JPA y Driver PostgreSQL (Pilar 2) -->
         <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-junit-jupiter</artifactId>
-            <version>5.11.0</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- Documentación OpenAPI / Swagger-UI (Pilar 3) -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+
+        <!-- Testing integral: Incluye JUnit 5, Mockito y Spring Boot Test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <!-- Plugin de Compilación para Java 21 -->
+            <!-- Plugin oficial de Spring Boot para ejecutar la aplicación -->
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.13.0</version>
-                <configuration>
-                    <release>21</release>
-                </configuration>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-            <!-- Plugin para ejecutar los tests -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.2.5</version>
-            </plugin>
-
-            <!-- Plugin de JaCoCo con exclusión de tests y App main -->
+            <!-- Plugin de JaCoCo actualizado para HieloFriends -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -61,8 +73,8 @@
                 <configuration>
                     <excludes>
                         <exclude>**/*Test.class</exclude>
-                        <exclude>com/neonpulse/App.class</exclude>
-                        <exclude>com/neonpulse/Main.class</exclude>
+                        <exclude>com/hielofriends/HielofriendsApplication.class</exclude>
+                        <exclude>com/hielofriends/infrastructure/web/dto/**</exclude>
                     </excludes>
                 </configuration>
                 <executions>
