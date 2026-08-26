@@ -1,44 +1,30 @@
-# Hielofriends Core - Módulo de Dominio y Pruebas Unitarias
+# HieloFriends - Backend Arquitectura Limpia (Hito 3)
 
-Este proyecto contiene el núcleo de dominio (*Core Domain*) para la gestión de inventario, modelos y órdenes de compra de peluches de pingüinos de **Hielofriends**. Está desarrollado con **Java 21** y alineado estrictamente con las prácticas de Arquitectura Limpia (sin dependencias externas ni acoplamiento en el dominio).
-
----
-
-## 🛠️ Tecnologías y Herramientas
-
-- **Lenguaje:** Java 21
-- **Gestor de Construcción:** Apache Maven
-- **Framework de Pruebas:** JUnit 5 (Jupiter)
-- **Framework de Mocks:** Mockito Core
-- **Reporte de Cobertura:** JaCoCo Maven Plugin
+Backend modular desarrollado en Java puro aplicando principios de Arquitectura Limpia y Diseño Guiado por el Dominio (DDD) para la plataforma de venta de peluches de pingüinos HieloFriends.
 
 ---
 
-## 🏛️ Arquitectura de Paquetes y Clases
+## 🏗️ Mapa de Paquetes y Capas
 
-### 📦 Código de Producción (`src/main/java/com/hielofriends/domain/`)
-
-- **`PenguinPlush.java` (o `PlushOrder.java`):** Entidad principal de dominio que encapsula las reglas de negocio, modelos de pingüinos (Emperador, Adelia, Papúa, etc.), control de inventario y stock disponible.
-- **`OutOfStockException.java`:** Excepción de dominio lanzada cuando se intenta realizar un pedido que excede el stock disponible de peluches.
-- **`MessageNotifier.java` (o `OrderNotifier.java`):** Interfaz/Contrato para el envío desacoplado de notificaciones (confirmación de compra, preparación o despacho).
-- **`OrderService.java` (o `PlushOrderService.java`):** Servicio de dominio que orquesta la validación de pedidos, reducción de existencias y activación de las notificaciones.
-
----
-
-### 🧪 Código de Pruebas (`src/test/java/com/hielofriends/domain/`)
-
-- **`PenguinPlushTest.java`:** Pruebas unitarias para la entidad principal, verificando flujos de compra exitosa, agotamiento de stock y validación de límites de cantidad.
-- **`OrderServiceTest.java`:** Pruebas unitarias para el servicio de órdenes utilizando **Mockito** para aislar y verificar el comportamiento y las interacciones con el contrato `MessageNotifier`.
+- `com.hielofriends.domain`: Núcleo de negocio en Java puro, libre de anotaciones o dependencias de frameworks externos.
+  - `entity`: Modelos ricos en comportamiento con identidad única (`PenguinPlush`, `Customer`).
+  - `valueobject`: Tipos inmutables y auto-validantes implementados con `record` (`Email`, `PlushPrice`).
+  - `exception`: Excepciones de dominio explícitas (`OutOfStockException`, `InvalidEmailException`).
+  - `repository`: Contratos abstractos de persistencia (`PenguinPlushRepository`).
+- `com.hielofriends.application`: Orquestación de lógica de negocio mediante casos de uso desacoplados con inyección de dependencias por constructor.
+  - `usecase`: `CreatePlushOrderUseCase`, `GetPenguinCatalogUseCase`.
+- `com.hielofriends.infrastructure`: Adaptadores técnicos y detalles de implementación.
+  - `persistence`: Implementación en memoria del contrato de repositorio (`InMemoryPenguinRepository`).
 
 ---
 
-## Comandos de Ejecución (Maven)
+## 🧪 Instrucciones de Compilación y Pruebas
 
-### Compilar el proyecto
-```bash
-mvn clean compile
-```
-### ejecutar la suite de pruebas
-```bash
-mvn clean test
-```
+- **Compilar y verificar el proyecto:**
+  ```bash
+  mvn clean compile
+
+- **Ejecutar la suite de pruebas unitarias:**
+  ```bash
+  mvn test
+  

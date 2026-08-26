@@ -1,5 +1,12 @@
-com\hielofriends\domain\OutOfStockException.class
-com\hielofriends\domain\PlushOrderService.class
-com\hielofriends\domain\PenguinPlush.class
+com\hielofriends\application\usecase\CreatePlushOrderUseCase.class
+com\hielofriends\domain\entity\Customer.class
 com\hielofriends\domain\MessageNotifier.class
+com\hielofriends\domain\exception\OutOfStockException.class
+com\hielofriends\application\usecase\GetPenguinCatalogUseCase.class
+com\hielofriends\infrastructure\persistence\InMemoryPenguinRepository.class
+com\hielofriends\domain\valueobject\Email.class
+com\hielofriends\domain\repository\PenguinPlushRepository.class
+com\hielofriends\domain\entity\PenguinPlush.class
+com\hielofriends\domain\exception\InvalidEmailException.class
+com\hielofriends\domain\valueobject\PlushPrice.class
 com\hielofriends\Main.class

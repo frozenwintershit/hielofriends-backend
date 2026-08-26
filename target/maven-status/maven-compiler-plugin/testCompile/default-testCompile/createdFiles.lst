@@ -1,2 +1,2 @@
-com\hielofriends\domain\PenguinPlushTest.class
-com\hielofriends\domain\PlushOrderServiceTest.class
+com\hielofriends\application\usecase\CreatePlushOrderUseCaseTest.class
+com\hielofriends\domain\entity\PenguinPlushTest.class

@@ -1,5 +1,12 @@
-C:\Users\nico-\OneDrive\Desktop\cosas\javacosas\HieloFriends\hielofriends-backend\src\main\java\com\hielofriends\domain\MessageNotifier.java
-C:\Users\nico-\OneDrive\Desktop\cosas\javacosas\HieloFriends\hielofriends-backend\src\main\java\com\hielofriends\domain\OutOfStockException.java
-C:\Users\nico-\OneDrive\Desktop\cosas\javacosas\HieloFriends\hielofriends-backend\src\main\java\com\hielofriends\domain\PenguinPlush.java
-C:\Users\nico-\OneDrive\Desktop\cosas\javacosas\HieloFriends\hielofriends-backend\src\main\java\com\hielofriends\domain\PlushOrderService.java
+C:\Users\nico-\OneDrive\Desktop\cosas\javacosas\HieloFriends\hielofriends-backend\src\main\java\com\hielofriends\application\usecase\CreatePlushOrderUseCase.java
+C:\Users\nico-\OneDrive\Desktop\cosas\javacosas\HieloFriends\hielofriends-backend\src\main\java\com\hielofriends\application\usecase\GetPenguinCatalogUseCase.java
+C:\Users\nico-\OneDrive\Desktop\cosas\javacosas\HieloFriends\hielofriends-backend\src\main\java\com\hielofriends\domain\entity\Customer.java
+C:\Users\nico-\OneDrive\Desktop\cosas\javacosas\HieloFriends\hielofriends-backend\src\main\java\com\hielofriends\domain\entity\PenguinPlush.java
+C:\Users\nico-\OneDrive\Desktop\cosas\javacosas\HieloFriends\hielofriends-backend\src\main\java\com\hielofriends\domain\exception\InvalidEmailException.java
+C:\Users\nico-\OneDrive\Desktop\cosas\javacosas\HieloFriends\hielofriends-backend\src\main\java\com\hielofriends\domain\exception\OutOfStockException.java
+C:\Users\nico-\OneDrive\Desktop\cosas\javacosas\HieloFriends\hielofriends-backend\src\main\java\com\hielofriends\domain\repository\MessageNotifier.java
+C:\Users\nico-\OneDrive\Desktop\cosas\javacosas\HieloFriends\hielofriends-backend\src\main\java\com\hielofriends\domain\repository\PenguinPlushRepository.java
+C:\Users\nico-\OneDrive\Desktop\cosas\javacosas\HieloFriends\hielofriends-backend\src\main\java\com\hielofriends\domain\valueobject\Email.java
+C:\Users\nico-\OneDrive\Desktop\cosas\javacosas\HieloFriends\hielofriends-backend\src\main\java\com\hielofriends\domain\valueobject\PlushPrice.java
+C:\Users\nico-\OneDrive\Desktop\cosas\javacosas\HieloFriends\hielofriends-backend\src\main\java\com\hielofriends\infrastructure\persistence\InMemoryPenguinRepository.java
 C:\Users\nico-\OneDrive\Desktop\cosas\javacosas\HieloFriends\hielofriends-backend\src\main\java\com\hielofriends\Main.java

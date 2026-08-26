@@ -1,5 +1,11 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+hielofriends-core,com.hielofriends.infrastructure.persistence,InMemoryPenguinRepository,30,0,0,0,6,0,4,0,4,0
+hielofriends-core,com.hielofriends.application.usecase,CreatePlushOrderUseCase,5,22,0,0,0,8,1,2,1,2
+hielofriends-core,com.hielofriends.application.usecase,GetPenguinCatalogUseCase,10,0,0,0,4,0,2,0,2,0
+hielofriends-core,com.hielofriends.domain.entity,Customer,48,0,10,0,14,0,9,0,4,0
+hielofriends-core,com.hielofriends.domain.entity,PenguinPlush,24,62,5,11,6,18,8,6,3,3
+hielofriends-core,com.hielofriends.domain.valueobject,Email,0,25,2,4,0,5,2,2,0,1
+hielofriends-core,com.hielofriends.domain.valueobject,PlushPrice,10,22,3,3,2,5,3,1,0,1
+hielofriends-core,com.hielofriends.domain.exception,InvalidEmailException,0,4,0,0,0,2,0,1,0,1
+hielofriends-core,com.hielofriends.domain.exception,OutOfStockException,0,4,0,0,0,2,0,1,0,1
 hielofriends-core,com.hielofriends,Main,7,0,0,0,3,0,2,0,2,0
-hielofriends-core,com.hielofriends.domain,OutOfStockException,0,4,0,0,0,2,0,1,0,1
-hielofriends-core,com.hielofriends.domain,PenguinPlush,6,45,0,4,2,14,2,6,2,4
-hielofriends-core,com.hielofriends.domain,PlushOrderService,0,16,0,0,0,7,0,2,0,2
