@@ -4,7 +4,7 @@ Microservicio backend desarrollado en Java 21 con Spring Boot aplicando principi
 
 ---
 
-## 🛠️ Pila Tecnológica
+## Pila Tecnológica
 
 * **Lenguaje:** Java 21
 * **Framework:** Spring Boot 3
@@ -15,7 +15,7 @@ Microservicio backend desarrollado en Java 21 con Spring Boot aplicando principi
 
 ---
 
-## 🏗️ Arquitectura y Estructura del Proyecto
+## Arquitectura y Estructura del Proyecto
 
 El sistema sigue una separación estricta de responsabilidades por capas concéntricas[cite: 1]:
 
@@ -33,17 +33,17 @@ El sistema sigue una separación estricta de responsabilidades por capas concén
 
 ---
 
-## 🚀 Instrucciones de Ejecución
+## Instrucciones de Ejecución
 
 ### 1. Iniciar la Base de Datos PostgreSQL
-```bash
+#```bash
 docker compose up -d
 
 ### 2. Ejecutar la Aplicación en Modo Desarrollo
-```bash
+#```bash
 ./mvnw spring-boot:run
 *(En Windows también es válido `mvn spring-boot:run`)*
 
 ### 3. Ejecutar Pruebas Automatizadas
 ```bash
-mvn clean test
+#mvn clean test
