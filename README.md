@@ -1,4 +1,4 @@
-# HieloFriends - Backend Arquitectura Limpia (Hito 3)
+# HieloFriends - Backend
 
 Backend modular desarrollado en Java puro aplicando principios de Arquitectura Limpia y Diseño Guiado por el Dominio (DDD) para la plataforma de venta de peluches de pingüinos HieloFriends.
 
