@@ -3,3 +3,7 @@ spring:
     active: dev
   application:
     name: hielofriends-backend
+  sql:
+    init:
+      mode: always
+      encoding: UTF-8

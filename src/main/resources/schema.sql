@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS penguin_plushes (
+    id VARCHAR(255) PRIMARY KEY,
+    model VARCHAR(255) NOT NULL,
+    price DOUBLE PRECISION NOT NULL,
+    currency VARCHAR(255) NOT NULL,
+    available_stock INTEGER NOT NULL
+);

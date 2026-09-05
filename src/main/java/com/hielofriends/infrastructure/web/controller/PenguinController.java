@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/penguins")
+@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:3000"})
 @Tag(name = "Penguins", description = "Catálogo y pedidos de peluches de pingüinos")
 public class PenguinController {
 
