@@ -1,6 +1,20 @@
-# HieloFriends - Backend Microservicio (Hitos 3 & 4)
+# 🐧 HieloFriends Core API - Backend Microservicio (Hitos 3 & 4)
 
-Microservicio backend desarrollado en Java 21 con Spring Boot aplicando principios de Arquitectura Limpia, Diseño Guiado por el Dominio (DDD), persistencia relacional en PostgreSQL orquestada con Docker y documentación interactiva mediante OpenAPI/Swagger.
+Bienvenidos a **HieloFriends**, una plataforma diseñada para gestionar el catálogo y la venta exclusiva de peluches artesanales de pingüinos de colección. 
+
+El objetivo de este microservicio es garantizar que cada orden de compra se procese respetando rigurosamente las reglas del mundo físico: control de stock en tiempo real, validación estricta de clientes y congelamiento de precios por modelo, asegurando una experiencia de compra confiable y sin sobreventas.
+
+Construido en **Java 21** con **Spring Boot 3**, el sistema desacopla la lógica comercial mediante **Clean Architecture** y **Diseño Guiado por el Dominio (DDD)**, respaldado por persistencia transaccional en **PostgreSQL** sobre **Docker** y documentación interactiva mediante **OpenAPI/Swagger**.
+
+---
+
+## ❄️ El Dominio de Negocio
+
+El corazón de HieloFriends modela el ciclo de vida comercial de los peluches:
+
+* **Catálogo Antártico:** Cada peluche (`PenguinPlush`) posee un modelo registrado, un precio monetario inmutable (`PlushPrice`) y un inventario disponible.
+* **Control de Stock Estricto:** No se permite vender unidades inexistentes ni aceptar cantidades negativas; cualquier exceso de demanda dispara excepciones de dominio explícitas (`OutOfStockException`).
+* **Identidad del Cliente:** Toda reserva y orden vincula la identidad del comprador (`Customer`) verificando que su correo electrónico (`Email`) cumpla con formatos válidos antes de tocar la persistencia.
 
 ---
 
@@ -8,16 +22,16 @@ Microservicio backend desarrollado en Java 21 con Spring Boot aplicando principi
 
 * **Lenguaje:** Java 21
 * **Framework:** Spring Boot 3
-* **Persistencia:** Spring Data JPA & PostgreSQL 16
+* **Persistencia:** Spring Data JPA & PostgreSQL 16 Alpine
 * **Virtualización:** Docker & Docker Compose
 * **Documentación:** SpringDoc OpenAPI 3 / Swagger-UI
-* **Testing:** JUnit 5 & Mockito
+* **Testing y Calidad:** JUnit 5, Mockito & JaCoCo
 
 ---
 
 ## Arquitectura y Estructura del Proyecto
 
-El sistema sigue una separación estricta de responsabilidades por capas concéntricas[cite: 1]:
+El sistema sigue una separación estricta de responsabilidades por capas concéntricas:
 
 * `domain` (Java Puro, cero dependencias externas):
   * `entity`: Entidades con identidad única y reglas de negocio encapsuladas (`PenguinPlush`, `Customer`).
@@ -36,14 +50,18 @@ El sistema sigue una separación estricta de responsabilidades por capas concén
 ## Instrucciones de Ejecución
 
 ### 1. Iniciar la Base de Datos PostgreSQL
-#```bash
+```bash
 docker compose up -d
-
+```
 ### 2. Ejecutar la Aplicación en Modo Desarrollo
-#```bash
+```bash
 ./mvnw spring-boot:run
+```
 *(En Windows también es válido `mvn spring-boot:run`)*
-
+*API REST: http://localhost:8080/api/v1/penguins*
+*Swagger UI (Dev): http://localhost:8080/swagger-ui.html*
 ### 3. Ejecutar Pruebas Automatizadas
 ```bash
-#mvn clean test
+mvn clean test
+```
+*(Para generar el reporte HTML de JaCoCo en target/site/jacoco/index.html ejecuta `mvn clean verify`)*

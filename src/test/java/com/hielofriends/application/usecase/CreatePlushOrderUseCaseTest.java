@@ -16,6 +16,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -51,5 +52,22 @@ class CreatePlushOrderUseCaseTest {
     @Test
     void shouldRejectInvalidEmailFormat() {
         assertThrows(InvalidEmailException.class, () -> new Email("correo-invalido.com"));
+    }
+
+    @Test
+    void shouldThrowExceptionWhenPlushDoesNotExist() {
+        // Arrange
+        String nonExistentId = "plush-inexistente";
+        Email email = new Email("cliente@hielofriends.cl");
+        when(repository.findById(nonExistentId)).thenReturn(Optional.empty());
+
+        // Act & Assert
+        IllegalArgumentException exception = assertThrows(
+            IllegalArgumentException.class,
+            () -> useCase.execute(nonExistentId, 1, email)
+        );
+
+        assertEquals("El peluche no existe en el catálogo.", exception.getMessage());
+        verify(repository, never()).save(any());
     }
 }

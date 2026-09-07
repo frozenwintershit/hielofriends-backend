@@ -64,7 +64,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
             <!-- Plugin de JaCoCo actualizado para HieloFriends -->
             <plugin>
                 <groupId>org.jacoco</groupId>
@@ -72,9 +71,11 @@
                 <version>0.8.11</version>
                 <configuration>
                     <excludes>
-                        <exclude>**/*Test.class</exclude>
-                        <exclude>com/hielofriends/HielofriendsApplication.class</exclude>
-                        <exclude>com/hielofriends/infrastructure/web/dto/**</exclude>
+            <!-- Excluye todo el paquete de infraestructura y subpaquetes -->
+                        <exclude>**/infrastructure/**</exclude>
+            <!-- Excluye clases principales de arranque sin importar mayúsculas/minúsculas -->
+                        <exclude>**/*Application*</exclude>
+                        <exclude>**/Main*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
@@ -89,6 +90,13 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/infrastructure/**</exclude>
+                                <exclude>**/*Application*</exclude>
+                                <exclude>**/Main*</exclude>
+                            </excludes>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

@@ -3,33 +3,56 @@ package com.hielofriends.domain.entity;
 import com.hielofriends.domain.exception.OutOfStockException;
 import com.hielofriends.domain.valueobject.PlushPrice;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class PenguinPlushTest {
 
     @Test
-    void shouldReduceStockWhenStockIsAvailable() {
-        PenguinPlush plush = new PenguinPlush("1", "Pingüino Emperador", new PlushPrice(15990, "CLP"), 5);
+    void shouldCreatePenguinPlushAndGettersWork() {
+        PlushPrice price = new PlushPrice(15990.0, "CLP");
+        PenguinPlush plush = new PenguinPlush("p-1", "Emperador", price, 10);
 
-        plush.reduceStock(2);
-
-        assertEquals(3, plush.getAvailableStock());
+        assertEquals("p-1", plush.getId());
+        assertEquals("Emperador", plush.getModel());
+        assertEquals(price, plush.getPrice());
+        assertEquals(10, plush.getAvailableStock());
     }
 
     @Test
-    void shouldThrowExceptionWhenReducingMoreThanAvailableStock() {
-        PenguinPlush plush = new PenguinPlush("2", "Pingüino Adelia", new PlushPrice(12990, "CLP"), 1);
+    void shouldThrowWhenConstructorArgumentsAreInvalid() {
+        PlushPrice price = new PlushPrice(15990.0, "CLP");
 
-        assertThrows(OutOfStockException.class, () -> plush.reduceStock(2));
+        assertThrows(IllegalArgumentException.class, () -> new PenguinPlush(null, "Modelo", price, 5));
+        assertThrows(IllegalArgumentException.class, () -> new PenguinPlush("", "Modelo", price, 5));
+        assertThrows(IllegalArgumentException.class, () -> new PenguinPlush("   ", "Modelo", price, 5));
+
+        assertThrows(IllegalArgumentException.class, () -> new PenguinPlush("id", null, price, 5));
+        assertThrows(IllegalArgumentException.class, () -> new PenguinPlush("id", "", price, 5));
+        assertThrows(IllegalArgumentException.class, () -> new PenguinPlush("id", "   ", price, 5));
+
+        assertThrows(IllegalArgumentException.class, () -> new PenguinPlush("id", "Modelo", null, 5));
+        assertThrows(IllegalArgumentException.class, () -> new PenguinPlush("id", "Modelo", price, -1));
     }
 
     @Test
-    void shouldThrowExceptionWhenInitialDataIsInvalid() {
-        assertThrows(IllegalArgumentException.class, () -> 
-            new PenguinPlush("", "Pingüino Papúa", new PlushPrice(10000, "CLP"), 2));
-        assertThrows(IllegalArgumentException.class, () -> 
-            new PenguinPlush("3", "Pingüino Papúa", new PlushPrice(10000, "CLP"), -1));
+    void shouldReduceStockCorrectly() {
+        PlushPrice price = new PlushPrice(15990.0, "CLP");
+        PenguinPlush plush = new PenguinPlush("p-1", "Emperador", price, 10);
+
+        plush.reduceStock(3);
+        assertEquals(7, plush.getAvailableStock());
+
+        plush.reduceStock(7);
+        assertEquals(0, plush.getAvailableStock());
+    }
+
+    @Test
+    void shouldThrowExceptionWhenReducingInvalidStock() {
+        PlushPrice price = new PlushPrice(15990.0, "CLP");
+        PenguinPlush plush = new PenguinPlush("p-1", "Emperador", price, 5);
+
+        assertThrows(IllegalArgumentException.class, () -> plush.reduceStock(0));
+        assertThrows(IllegalArgumentException.class, () -> plush.reduceStock(-1));
+        assertThrows(OutOfStockException.class, () -> plush.reduceStock(6));
     }
 }
